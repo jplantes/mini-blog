@@ -6,18 +6,21 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 
 interface Entrada {
-  id?: string
   titulo: string
   descripcion: string
   articulo: string
 }
 
+
+interface Entradas extends Entrada {
+  id: string
+}
 export const useBlog = () => {
 
 const router = useRouter()
 const db = getFirestore()
 
-const entradas = ref<Entrada[]>([])
+const entradas = ref<Entradas[]>([])
 const isLogued = ref(false)
 const isSave = ref(false)
 const titulo = ref('')
